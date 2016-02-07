@@ -1,0 +1,60 @@
+package com.delhi.prac;
+
+import java.util.Scanner;
+
+/**
+ * @author abhijeet
+ *
+ */
+public class TheLoveLetterMystery {
+	
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        
+        //no of test case
+        int T=in.nextInt();
+        
+        //string array
+        String[] s=new String[T];
+        for(int i=0;i<T;i++){
+            s[i]=in.next();
+        }
+        
+        for(int i=0;i<T;i++){
+            int len=s[i].length();
+            int left,med,right=0;
+            if(len%2!=0){
+            	//odd
+                med=len/2;
+                left=med-1;
+                right=med+1;
+            }
+            else{
+            	
+            	//even
+                med=(len/2)-1;
+                left=med;
+                right=med+1;
+            }
+            
+            
+            char[] c=s[i].toCharArray();
+            
+            int count=0;
+            
+            //compare and count total
+            while(left>=0 && right<= (len-1)){
+               int a=(int)(c[left]-'0');
+               int b=(int)(c[right]-'0');
+               
+                count=count+ Math.abs(b-a);
+                
+                left--;
+                right++;
+            }
+            System.out.println(count);
+        }
+        
+    }
+
+}
